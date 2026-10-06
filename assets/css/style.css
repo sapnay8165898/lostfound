@@ -1,0 +1,130 @@
+/* ============================================
+   Lost and Found Management System
+   Theme: Black / Dark Gray / Blue / White
+   ============================================ */
+
+/* --- Color variables (easy to change later) --- */
+:root {
+    --black:      #0d0d0d;
+    --dark-gray:  #1c1c1e;
+    --mid-gray:   #2a2a2d;
+    --blue:       #2563eb;
+    --blue-dark:  #1d4ed8;
+    --white:      #ffffff;
+    --light-bg:   #f4f6f9;
+    --text-dark:  #1a1a1a;
+    --text-muted: #6b7280;
+    --border:     #e5e7eb;
+}
+
+/* --- Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--black);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--blue);
+}
+
+.navbar .brand {
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.navbar .brand span {
+    color: var(--blue);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.navbar ul li a {
+    color: #d1d5db;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar ul li a:hover {
+    background-color: var(--mid-gray);
+    color: var(--white);
+}
+
+.navbar ul li a.active {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+/* --- Main container --- */
+.container {
+    flex: 1;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* --- Hero / page title --- */
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+/* --- Card --- */
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--black);
+    color: #9ca3af;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    border-top: 3px solid var(--blue);
+}
+
+.footer span {
+    color: var(--blue);
+}

@@ -1,0 +1,15 @@
+# Ignore uploaded user files (kept on server only)
+uploads/items/*
+uploads/claims/*
+!uploads/items/.gitkeep
+!uploads/claims/.gitkeep
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore log files
+*.log
