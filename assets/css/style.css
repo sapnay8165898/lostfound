@@ -3,6 +3,145 @@
    Theme: Black / Dark Gray / Blue / White
    ============================================ */
 
+/* ============================================
+   FORMS
+   ============================================ */
+
+.form-wrapper {
+    max-width: 460px;
+    margin: 20px auto;
+}
+
+.form-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text-dark);
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.05s;
+}
+
+.btn-primary {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-dark);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Alerts (for showing errors / success messages) */
+.alert {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+}
+
+.alert-error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-left-color: #dc2626;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border-left-color: #16a34a;
+}
+
+/* Small helper for form footer text */
+.form-footer-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 20px;
+}
+
+.form-footer-text a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-footer-text a:hover {
+    text-decoration: underline;
+}
 /* --- Color variables (easy to change later) --- */
 :root {
     --black:      #0d0d0d;
