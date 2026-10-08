@@ -3,10 +3,12 @@ $page_title = "Register";
 $base_path  = "../";
 
 require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../includes/db.php';
 
 // ---- Handle form submission ----
-$errors = [];
-$old    = ['name' => '', 'email' => ''];  // to refill the form after error
+$errors  = [];
+$success = '';
+$old     = ['name' => '', 'email' => ''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -16,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password =      $_POST['password'] ?? '';
     $confirm  =      $_POST['confirm']  ?? '';
 
-    // Keep these so we can re-fill the form
     $old['name']  = $name;
     $old['email'] = $email;
 
@@ -43,10 +44,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Passwords do not match.";
     }
 
-    // 3. If no errors — for now, show a success message.
-    //    (On Day 3, we will save the user to the database.)
+    // 3. Check if email already exists in the database
     if (empty($errors)) {
-        $success = "Validation passed! User registration will be saved on Day 3.";
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? LIMIT 1");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $errors[] = "This email is already registered. Please login instead.";
+        }
+        $stmt->close();
+    }
+
+    // 4. If still no errors — save the user to the database
+    if (empty($errors)) {
+        // Hash the password securely (never store plain passwords!)
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = $conn->prepare(
+            "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)"
+        );
+        $stmt->bind_param("sss", $name, $email, $hashed_password);
+
+        if ($stmt->execute()) {
+            $success = "Registration successful! You can now login.";
+            // Clear the form
+            $old = ['name' => '', 'email' => ''];
+        } else {
+            $errors[] = "Something went wrong. Please try again.";
+        }
+        $stmt->close();
     }
 }
 ?>
@@ -68,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!empty($success)): ?>
             <div class="alert alert-success">
                 <?php echo htmlspecialchars($success); ?>
+                <br><a href="login.php" style="color:#166534;font-weight:600;">Go to Login →</a>
             </div>
         <?php endif; ?>
 
